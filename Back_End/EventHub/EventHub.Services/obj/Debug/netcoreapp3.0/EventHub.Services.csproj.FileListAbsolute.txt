@@ -1,0 +1,13 @@
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\bin\Debug\netcoreapp3.0\EventHub.Services.deps.json
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\bin\Debug\netcoreapp3.0\EventHub.Services.dll
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\bin\Debug\netcoreapp3.0\EventHub.Services.pdb
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\bin\Debug\netcoreapp3.0\EventHub.Core.dll
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\bin\Debug\netcoreapp3.0\EventHub.DAL.dll
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\bin\Debug\netcoreapp3.0\EventHub.DAL.pdb
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\bin\Debug\netcoreapp3.0\EventHub.Core.pdb
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\obj\Debug\netcoreapp3.0\EventHub.Services.csprojAssemblyReference.cache
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\obj\Debug\netcoreapp3.0\EventHub.Services.AssemblyInfoInputs.cache
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\obj\Debug\netcoreapp3.0\EventHub.Services.AssemblyInfo.cs
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\obj\Debug\netcoreapp3.0\EventHub.Services.csproj.CopyComplete
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\obj\Debug\netcoreapp3.0\EventHub.Services.dll
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Services\obj\Debug\netcoreapp3.0\EventHub.Services.pdb

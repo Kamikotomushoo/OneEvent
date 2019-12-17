@@ -1,0 +1,7 @@
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\bin\Debug\netcoreapp3.0\EventHub.Core.deps.json
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\bin\Debug\netcoreapp3.0\EventHub.Core.dll
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\bin\Debug\netcoreapp3.0\EventHub.Core.pdb
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.AssemblyInfoInputs.cache
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.AssemblyInfo.cs
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.dll
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.pdb
