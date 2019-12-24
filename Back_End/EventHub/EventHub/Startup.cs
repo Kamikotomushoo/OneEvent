@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EventHub.Core.Abstractions.Services;
+using EventHub.Core.Validators;
 using EventHub.DAL;
 using EventHub.Services;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -59,6 +61,14 @@ namespace EventHub
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+            services
+                .AddMvc(option =>
+                {
+                    option.EnableEndpointRouting = false;
+                })
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FullEventsDTOValidator>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

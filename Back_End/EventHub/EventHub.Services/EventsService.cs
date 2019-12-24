@@ -24,7 +24,7 @@ namespace EventHub.Services
             _mapper = mapp;
             _context = context;
         }
-        public bool AddEvent(FullEventsDTO eventDTO)
+        public FullEventsDTO AddEvent(FullEventsDTO eventDTO)
         {
             var myEvent = new Events();
             _mapper.Map(eventDTO, myEvent);
@@ -32,10 +32,9 @@ namespace EventHub.Services
             if (res != null)
             {
                 _context.SaveChanges();
-                eventDTO.Id = myEvent.Id;
-                return true;
+                return eventDTO;
             }
-            return false;
+            return null;
 
         }
 
@@ -52,9 +51,8 @@ namespace EventHub.Services
 
         public DetailsOfEventsDTO GetDetailsById(int Id)
         {
-            var det = EventsRepository.GetById(Id);    
-            return _mapper.Map(det, new DetailsOfEventsDTO());
-
+            var det = EventsRepository.GetById(Id);         
+            return  det != null ? _mapper.Map(det, new DetailsOfEventsDTO()) : null;
         }
 
         public List<HeadersOfEventsDTO> GetAllHeaders()

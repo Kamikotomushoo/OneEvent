@@ -28,7 +28,6 @@ namespace EventHub.Controllers
             {
                 var result = _service.GetAllHeaders();
 
-                // throw new Exception("Something wrong...");
                 return Ok(result);
             }
             catch
@@ -41,15 +40,11 @@ namespace EventHub.Controllers
         [HttpGet("details/{id}")]
         public ActionResult<DetailsOfEventsDTO> GetAllDetails([FromRoute]int id)
         {
-            try
-            {
-                var result = _service.GetDetailsById(id);
+            var result = _service.GetDetailsById(id);
+            if (result != null)
                 return Ok(result);
-            }
-            catch
-            {
-                return new NotFoundResult();
-            }
+            return new NotFoundResult();
+            
         }
 
         //[HttpPut]

@@ -11,7 +11,7 @@ namespace EventHub.Core.Abstractions.Services
     {
         List<HeadersOfEventsDTO> GetAllHeaders();
         DetailsOfEventsDTO GetDetailsById(int Id);
-        bool AddEvent(FullEventsDTO eventDTO);
+        FullEventsDTO AddEvent(FullEventsDTO eventDTO);
         bool DeleteById(int id);
       //  bool Update(FullEventsDTO eventDTO);
     }

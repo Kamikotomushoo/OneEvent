@@ -5,3 +5,4 @@ D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventH
 D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.AssemblyInfo.cs
 D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.dll
 D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.pdb
+D:\exoft\OneEvent\Back_End\EventHub\EventHub.Core\obj\Debug\netcoreapp3.0\EventHub.Core.csprojAssemblyReference.cache
