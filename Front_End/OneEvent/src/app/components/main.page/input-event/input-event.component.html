@@ -1,0 +1,145 @@
+<form class="login-up-form" [formGroup]="eventForm" (ngSubmit)="OnSubmit()">
+  <div formGroupName="inputField"
+       class="event-info">
+      <div class="input-fields">
+          <!-- <div> -->
+              <input
+              type="text"
+              name="NameEvent"
+              class="filed"
+              placeholder="Name of event*"
+              formControlName="nameEvent">
+              <br>
+          <!-- </div> -->
+          <div class="message-box">
+              <span
+              *ngIf="!eventForm.get('inputField.nameEvent').valid && eventForm.get('inputField.nameEvent').touched"
+              class="help-block">Please enter event name</span>
+          </div>
+          <div style="display: flex; justify-content:center;">
+            <textarea
+            name="loginField"
+            class="filed-description"
+            placeholder="Description"
+            formControlName="descritionField" style="height: 4em;"></textarea>
+
+            <br>
+        </div>
+      </div>
+
+      <div class="datetime-fields">
+
+          <div class="message-box">
+              <span
+              class="help-block">Start Time*</span>
+          </div>
+
+          <div formGroupName="startDateTimeGroup">
+
+           <div class="datetime-input">
+              <mat-datepicker-toggle
+                class="date-icon-picker"
+                [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker
+                #picker1
+                disabled="false">
+              </mat-datepicker>
+              <input
+                class="date-field"
+                matInput [matDatepicker]="picker1"
+                placeholder="Start date of event"
+                [min]="minDate"
+                formControlName="startDateField"
+                disabled>
+          </div>
+
+          <div class="datetime-input" >
+              <ngx-material-timepicker-toggle
+                [for]="min1"
+                style="padding: 0 4px 0 4px;">
+              </ngx-material-timepicker-toggle>
+              <ngx-material-timepicker
+                #min1
+                [theme]="darkTheme">
+              </ngx-material-timepicker>
+              <input
+              placeholder="Start time of event"
+              [ngxTimepicker]="min1"
+              class="date-field"
+              [format]="24"
+              readonly
+              formControlName="startTimeField"
+              [disableClick]="true">
+            </div>
+          </div>
+
+          <div class="message-box"
+          *ngIf="!eventForm.get('inputField.startDateTimeGroup').valid && eventForm.get('inputField.startDateTimeGroup').touched">
+              <span
+              class="help-block">Please enter valid start date & time</span>
+              <hr>
+          </div>
+
+          <div class="message-box">
+              <br>
+                <span
+                class="help-block">End Time</span>
+          </div>
+
+            <div formGroupName="endDateTimeGroup">
+
+            <div class="datetime-input">
+                <mat-datepicker-toggle
+                  class="date-icon-picker"
+                  [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker
+                  #picker
+                  disabled="false">
+                </mat-datepicker>
+                <input
+                  class="date-field"
+                  matInput [matDatepicker]="picker"
+                  placeholder="End date of event"
+                  [min]="minDate"
+                  formControlName="endDateField"
+                  disabled>
+            </div>
+
+            <div class="datetime-input" >
+                <ngx-material-timepicker-toggle
+                  [for]="min"
+                  style="padding: 0 4px 0 4px;">
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker
+                  #min
+                  [theme]="darkTheme">
+                </ngx-material-timepicker>
+                <input
+                placeholder="End time of event"
+                [ngxTimepicker]="min"
+                class="date-field"
+                [format]="24"
+                readonly
+                formControlName="endTimeField"
+                [disableClick]="true">
+              </div>
+            </div>
+      </div>
+  </div>
+
+  <div class="message-box"
+  *ngIf="!eventForm.get('inputField').valid && eventForm.get('inputField').touched">
+  <br>
+    <hr>
+    <span
+    class="help-block">Please enter all required(*) data</span>
+  </div>
+
+  <div>
+      <input
+      type="submit"
+      value="Add Event"
+      class="buttonOfForm"
+      [disabled]="!eventForm.get('inputField').valid">
+  </div>
+</form>

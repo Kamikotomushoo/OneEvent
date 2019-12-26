@@ -1,0 +1,130 @@
+%lexend-font {
+  margin: 10px;
+  font-family: 'Lexend Tera', sans-serif;
+  border: 3px solid black;
+  background-color: rgba(214, 214, 175, 0) !important;
+  font-size: 20px;
+}
+
+form{
+
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .event-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  align-items: center;
+
+    .input-fields{
+      flex-direction: column;
+      .filed{
+        @extend %lexend-font;
+
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+
+        @media (max-width: 600px)
+        {
+             font-size: 15px;
+        }
+
+        @media (max-width: 350px)
+        {
+            font-size: 12px;
+        }
+
+       }
+
+       .filed-description{
+
+        @extend %lexend-font;
+        resize: none;
+        @media (max-width: 600px)
+        {
+             font-size: 15px;
+        }
+
+        @media (max-width: 350px)
+        {
+            font-size: 12px;
+        }
+       }
+    }
+
+    .datetime-fields{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .datetime-input{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+      }
+      .date-field{
+        margin: 10px;
+        font-family: 'Lexend Tera', sans-serif;
+        border: 1.5px solid black;
+        background-color: rgba(214, 214, 175, 0) !important;
+        font-size: 12px;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+      }
+
+      .date-icon-picker{
+        color: black;
+      }
+    }
+  }
+
+
+  .message-box{
+  display: flex;
+  flex-direction: column ;
+  align-items: center;
+  .help-block{
+    color: black;
+    font-family: 'Lexend Tera', sans-serif;
+   }
+  }
+
+   .buttonOfForm {
+    color: black;
+    font-family: 'Lexend Tera', sans-serif;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 5px 15px 5px 15px;
+    border-radius: 7px;
+    margin: 10px 10px 0 0;
+    border: 3px solid black;
+    cursor: pointer;
+  }
+
+  .buttonOfForm:hover{
+   background-color: rgba(148, 146, 146, 0.322);
+  }
+
+  .buttonOfForm:active{
+   background-color: rgb(100, 100, 100);
+   border-color: white;
+   color: white;
+  }
+
+  .buttonOfForm:disabled{
+    background-color: rgba(24, 23, 23, 0.322);
+    cursor: default;
+   }
+
+   hr{
+     border-top: 1px solid black;
+    width: 20vw;
+   }
+}
+
+

@@ -1,0 +1,50 @@
+%lexend-font {
+  font-family: 'Lexend Tera', sans-serif;
+}
+
+%archivo-font {
+  // font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.divHeader {
+  background-color: rgb(68, 84, 156);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .headerText{
+    cursor: pointer;
+    padding: 1.5%;
+    color: rgb(255, 255, 255);
+    font-size:35px;
+
+    .textOne{
+      @extend %archivo-font;
+    }
+
+    .textEvent{
+      @extend %lexend-font;
+    }
+
+  }
+
+}
+
+@media (max-width:  600px){
+  .textEvent{
+      font-size:25px;
+  }
+
+  .textOne{
+    font-size: 25px;
+  }
+
+  .headerText{
+  padding: 5px;
+  }
+}
+
+
+
