@@ -29,12 +29,12 @@ namespace EventHub.Services
             var myEvent = new Events();
             _mapper.Map(eventDTO, myEvent);
             var res = EventsRepository.Add(myEvent);
-            if (res != null)
-            {
+            //if (res != null)
+            //{
                 _context.SaveChanges();
                 return eventDTO;
-            }
-            return null;
+            //}
+            //return null;
 
         }
 
@@ -57,9 +57,16 @@ namespace EventHub.Services
 
         public List<HeadersOfEventsDTO> GetAllHeaders()
         {
-            return EventsRepository.GetAll()
+            var list = EventsRepository.GetAll()
                .Select(el => _mapper.Map(el, new HeadersOfEventsDTO()))
                .ToList();
+               
+            
+            list.Sort((x,y) => DateTime.Compare(x.StartTime, y.StartTime));
+
+
+
+            return list;
         }
 
         //public bool Update(FullEventsDTO eventDTO)

@@ -16,15 +16,15 @@ namespace EventHub.DAL.Repositories
         }
         public Events Add(Events entity)
         {
-            try
-            {
+            //try
+            //{
                 _context.Set<Events>().Add(entity);
                 return entity;
-            }
-            catch
-            {
-                return null;
-            }
+            //}
+            //catch
+            //{
+            //    return null;
+            //}
 
         }
 
