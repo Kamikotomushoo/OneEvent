@@ -1,11 +1,14 @@
-<h1 mat-dialog-title>New Event!</h1>
-<div mat-dialog-content>
-  <p>Name: {{data.name}}</p>
-  <p>Description: {{data.description}}</p>
-  <p>Start date: {{startDay}}/{{startMonth}}/{{startYear}} {{startHours}}:{{startMinutes}}</p>
-  <!-- <p>Start Time: {{startDate}}</p> -->
-  <p *ngIf="data.endTime > data.startTime">End date: {{endDay}}/{{endMonth}}/{{endYear}} {{endHours}}:{{endMinutes}}</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Ok</button>
+<div class="new-event-dialog">
+  <h1 >New Event!</h1>
+  <div>
+    <br>
+    <p>Name: {{data.name}}</p>
+    <p>Description: {{data.description}}</p>
+    <p>Start date: {{startDay}}/{{startMonth}}/{{startYear}} {{startHours}}:{{startMinutes}}</p>
+    <!-- <p>Start Time: {{startDate}}</p> -->
+    <p *ngIf="data.endTime > data.startTime">End date: {{endDay}}/{{endMonth}}/{{endYear}} {{endHours}}:{{endMinutes}}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Ok</button>
+  </div>
 </div>

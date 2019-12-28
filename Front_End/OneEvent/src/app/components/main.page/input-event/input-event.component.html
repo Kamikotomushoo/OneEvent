@@ -17,7 +17,7 @@
             Please enter valid event name</span>
             <span
             class="help-block">
-            (50 characters limit)</span>
+            (1-50 characters limit)</span>
         </div>
 
           <textarea
@@ -85,8 +85,9 @@
         <div
           class="message-box"
           *ngIf="
-            !eventForm?.get('startTimeField')?.valid &&
-            eventForm?.get('startTimeField')?.touched">
+            (!eventForm?.get('startTimeField')?.valid &&
+            eventForm?.get('startTimeField')?.touched )||
+            eventForm?.get('startDateField')?.invalid">
 
           <span class="help-block">Start time should be in future</span>
           <hr />

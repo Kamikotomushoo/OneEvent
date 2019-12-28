@@ -13,15 +13,15 @@ export class NewEventDialogComponent implements OnInit {
   startDay: number;
   startMonth: number;
   startYear: number;
-  startHours: number;
-  startMinutes: number;
+  startHours: string;
+  startMinutes: string;
 
   endDate: Date;
   endDay: number;
   endMonth: number;
   endYear: number;
-  endHours: number;
-  endMinutes: number;
+  endHours: string;
+  endMinutes: string;
 
   constructor(
     public dialogRef: MatDialogRef<NewEventDialogComponent>,
@@ -32,15 +32,23 @@ export class NewEventDialogComponent implements OnInit {
     this.startDay = new Date(this.startDate).getDate();
     this.startMonth = new Date(this.startDate).getMonth() + 1;
     this.startYear = new Date(this.startDate).getFullYear();
-    this.startHours = new Date(this.startDate).getHours();
-    this.startMinutes = new Date(this.startDate).getMinutes();
+
+    var stHours = new Date(this.startDate).getHours();
+    var startMinutes = new Date(this.startDate).getMinutes();
+
+    this.startHours = stHours < 10 ? '0' + stHours : stHours.toString();
+    this.startMinutes = startMinutes < 10 ? '0' + startMinutes : startMinutes.toString();
 
     this.endDate = this.data.endTime;
     this.endDay = new Date(this.endDate).getDate();
     this.endMonth = new Date(this.endDate).getMonth() + 1;
     this.endYear = new Date(this.endDate).getFullYear();
-    this.endHours = new Date(this.endDate).getHours();
-    this.endMinutes = new Date(this.endDate).getMinutes();
+
+    var endHours = new Date(this.endDate).getHours();
+    var endMinutes = new Date(this.endDate).getMinutes();
+
+    this.endHours = endHours < 10 ? '0' + endHours : endHours.toString();
+    this.endMinutes = endMinutes < 10 ? '0' + endMinutes : endMinutes.toString();
 
   }
 

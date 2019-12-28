@@ -42,18 +42,23 @@ export class InputEventComponent implements OnInit, AfterContentInit{
     this.eventForm = new FormGroup({
       nameEvent: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
       descritionField: new FormControl(null, [Validators.maxLength(1024)]),
-      startDateField: new FormControl(new Date(), [Validators.required]),
-      startTimeField: new FormControl(null, []),
+      startDateField: new FormControl(new Date(), Validators.required),
+      startTimeField: new FormControl(null),
       endDateField: new FormControl(null),
       endTimeField: new FormControl(null)
     });
   }
 
 
-  ngAfterContentInit(){
+  ngAfterContentInit() {
 
-    this.eventForm.get('startTimeField').setValidators([Validators.required
-      , this.CorrectStartTime.bind(this)]);
+
+    this.eventForm.get('startDateField').setValidators([Validators.required,
+       this.CorrectStartDate.bind(this) ]);
+
+    this.eventForm.get('startTimeField').setValidators([Validators.required,
+       this.CorrectStartTime.bind(this)]);
+
 
     this.eventForm.get('endDateField').setValidators(this.EndDateExist.bind(this));
     this.eventForm.get('endTimeField').setValidators([this.CorrectEndTime.bind(this)]);
@@ -62,54 +67,61 @@ export class InputEventComponent implements OnInit, AfterContentInit{
 
 
   OnSubmit() {
-    let eventName = this.eventForm.get('nameEvent').value;
-    let description = this.eventForm.get('descritionField').value;
-    let startDate = new Date(this.eventForm.get('startDateField').value);
-    var startTime = this.eventForm.get('startTimeField').value;
-    startTime = startTime.split(':');
-    startDate.setHours(+startTime[0]);
-    startDate.setMinutes(+startTime[1]);
-    var eventCntx: IEventContext;
-    let endDate = null;
-    if (this.eventForm.get('endDateField').value !== null) {
 
-      endDate = new Date(this.eventForm.get('endDateField').value);
-      var endTime = this.eventForm.get('endTimeField').value;
-      endTime = endTime.split(':');
-      endDate.setHours(+endTime[0]);
-      endDate.setMinutes(+endTime[1]);
-       eventCntx = {name: eventName,
-                    description: description,
-                    startTime: startDate,
-                    endTime: endDate };
-
-    } else {
-       eventCntx  = {name: eventName,
-        description: description,
-        startTime: startDate };
-    }
-
-    this.eventApiService.insertNewEvent(eventCntx).subscribe(responseData  => {
-      var rs = responseData as IEventContext;
-          // if(rs.endTime < rs.startTime) console.log('min time');
-        // console.log(responseData);
-        const dialogRef = this.dialog.open(NewEventDialogComponent, {
-          width: '350px',
-          data: rs
-        });
-
+        this.eventApiService.insertNewEvent(this.eventForm).subscribe(responseData  => {
+          var rs = responseData as IEventContext;
+            const dialogRef = this.dialog.open(NewEventDialogComponent, {
+              width: '400px',
+              data: rs
+            });
+            this.eventForm.reset();
+            this.eventForm = new FormGroup({
+              nameEvent: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
+              descritionField: new FormControl(null, [Validators.maxLength(1024)]),
+              startDateField: new FormControl(new Date(), Validators.required),
+              startTimeField: new FormControl(null),
+              endDateField: new FormControl(null),
+              endTimeField: new FormControl(null)
+            });
+            this. ngAfterContentInit();
     });
 
-    this.eventForm.reset();
+
   }
 
 
 /* прийшлось виносити валідатори сюди, бо коли намагався це зробити в іншому файлі,
   то при заданні валідатора з параметром ( дата початку івенту була параметром ) воно брало лише ту дату,
   яка по дефолту стоїть в інпуті... */
+
+  // CheckStartDate(control: FormControl): {[s: string]: boolean}  {
+  //   this.eventForm.get('startTimeField').updateValueAndValidity();
+  //   return null;
+  // }
+  CorrectStartDate(control: FormControl): {[s: string]: boolean}  {
+
+    const tempDate = new Date();
+    const date: Date = control.value;
+    if (date !== null) {
+      console.log(date.getFullYear());
+      if ((date.getFullYear() === tempDate.getFullYear()
+      && date.getMonth() === tempDate.getMonth()
+      && date.getDate() === tempDate.getDate()) ||
+      this.eventForm.get('startTimeField').invalid ||
+      this.eventForm.get('endDateField').value !== null) {
+        this.eventForm.get('startTimeField').updateValueAndValidity();
+      }
+    }
+    return null;
+  }
+
    CorrectStartTime(control: FormControl): {[s: string]: boolean}  {
     const tempDate = new Date();
     const date: Date = this.eventForm.get('startDateField').value;
+
+    this.eventForm.get('endDateField').updateValueAndValidity();
+    this.eventForm.get('endTimeField').updateValueAndValidity();
+
 
     if ( control.value !== null ) {
       if ((date.getFullYear() === tempDate.getFullYear()
@@ -119,46 +131,69 @@ export class InputEventComponent implements OnInit, AfterContentInit{
         myTime = myTime.split(':');
         if(tempDate.getHours() > +myTime[0] ||
         (tempDate.getHours() === +myTime[0] && tempDate.getMinutes() >= +myTime[1] )) return { 'incorrectTime': true };
+        // this.eventForm.get('startDateField').updateValueAndValidity();
+        return null;
       }
+      return null;
     }
-    return null;
+    return { 'incorrectTime': true };
+
   }
 
   EndDateExist(control: FormControl): {[s: string]: boolean}  {
     if (control.value !== null && this.eventForm.get('endTimeField').value === null) {
       console.log(this.eventForm.get('endTimeField').value);
       return { 'endTimeDoesNotExist': true }; }
-    return null;
+      else if(control.value !== null && this.eventForm.get('endTimeField').value !== null)
+      {
+        // if (this.eventForm.get('endTimeField').invalid){
+        //    this.eventForm.get('endTimeField').updateValueAndValidity(); }
+        this.eventForm.get('endTimeField').updateValueAndValidity();
+
+        return null;
+      }
   }
 
 
   CorrectEndTime(control: FormControl): {[s: string]: boolean}  {
-    this.eventForm.get('endDateField').updateValueAndValidity();
+
+
     const startDate: Date = this.eventForm.get('startDateField').value;
     const endDate: Date = this.eventForm.get('endDateField').value;
     if ( endDate !== null) {
-      if ((endDate.getFullYear() < startDate.getFullYear()
-        || endDate.getMonth() < startDate.getMonth()
-        || endDate.getDate() < startDate.getDate()) ) { return { 'incorrectTime': true }; }
-    console.log(control.value );
-    if ( control.value !== null ) {
+      if ((endDate.getFullYear() < startDate.getFullYear()) ||
+
+        (endDate.getFullYear()  === startDate.getFullYear()
+        && endDate.getMonth() < startDate.getMonth()) ||
+
+       (endDate.getFullYear()  === startDate.getFullYear()
+       && endDate.getMonth() === startDate.getMonth()
+       && endDate.getDate() < startDate.getDate() )) { return { 'incorrectTime': true }; }
+
+      if ( control.value !== null ) {
 
       if ((endDate.getFullYear() === startDate.getFullYear()
         && endDate.getMonth() === startDate.getMonth()
         && endDate.getDate() === startDate.getDate()) ) {
 
-      var myTime = control.value;
-      var startTime = this.eventForm.get('startTimeField').value;
+        var myTime = control.value;
+        var startTime = this.eventForm.get('startTimeField').value;
 
-      myTime = myTime.split(':');
-      startTime = startTime.split(':');
+        myTime = myTime.split(':');
+        startTime = startTime.split(':');
 
-        if( (+startTime[0] > +myTime[0])
-        || (+startTime[0]  === +myTime[0] && +startTime[1]  > +myTime[1] )) return { 'incorrectTime': true }; }
+        if( (+startTime[0] > +myTime[0]) ||
+        (+startTime[0]  === +myTime[0] && +startTime[1]  > +myTime[1] )) return { 'incorrectTime': true };
+      }
+      if(this.eventForm.get('endDateField').invalid)
+      this.eventForm.get('endDateField').updateValueAndValidity();
+      return null;
        } else {
         return { 'incorrectTime': true };
        }
       } else if (endDate === null && control.value !== null){ return { 'incorrectTime': true }; }
+    if(this.eventForm.get('endDateField').invalid)
+      this.eventForm.get('endDateField').updateValueAndValidity();
     return null;
   }
 
