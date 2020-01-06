@@ -3,4 +3,5 @@ export interface IEventContext {
   description?: string;
   startTime?: Date;
   endTime?: Date;
+  model?: any;
 }

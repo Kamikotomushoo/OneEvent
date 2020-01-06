@@ -9,43 +9,13 @@ import { FormGroup } from '@angular/forms';
 @Injectable()
 export class EventApiService {
 
-  cityInHeader = new Subject<string>();
-  // weatherResponse = new Subject<IWeatherContext>();
+  newEventAdded = new Subject();
+  deleteEventEmitter = new Subject<any>();
+
 
   constructor(private http: HttpClient) {}
 
-  // insertNewEvent(event: IEventContext) {
-  //   try {
-  //     var returnObserveble = this.http.post(environment.apiUrl + '/events' , event );
-  //     return returnObserveble;
-  //   } catch {
-  //     return null;
-  //   }
-  // }
-  // insertNewEvent(name: string , description: string, stDate: Date, stTime: any, endDate: Date, endTime: any) {
-  //   try {
 
-  //     if ( endDate !== null) {
-
-  //       endTime = endTime.split(':');
-  //       endDate.setHours(+endTime[0]);
-  //       endDate.setMinutes(+endTime[1]);
-
-  //     } else {
-  //       endDate = stDate;
-  //     }
-
-  //     let event: IEventContext = {name: name,
-  //       description: description,
-  //       startTime: stDate,
-  //       endTime: endDate };
-
-  //     var returnObserveble = this.http.post(environment.apiUrl + '/events' , event );
-  //     return returnObserveble;
-  //   } catch {
-  //     return null;
-  //   }
-  // }
 
   insertNewEvent(eventForm: FormGroup ) {
     try {
@@ -85,5 +55,18 @@ export class EventApiService {
     } catch {
       return null;
     }
+  }
+
+
+  getAllHeaders( ) {
+      return this.http.get(environment.apiUrl + '/events/headers');
+  }
+
+  deleteEventById(id: number ) {
+    return this.http.delete(environment.apiUrl + '/events/' + id);
+  }
+
+  getDetailsById(id: number ) {
+    return this.http.get(environment.apiUrl + '/events/details/' + id);
   }
 }

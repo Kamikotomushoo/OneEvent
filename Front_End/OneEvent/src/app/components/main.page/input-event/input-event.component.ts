@@ -84,6 +84,7 @@ export class InputEventComponent implements OnInit, AfterContentInit{
               endTimeField: new FormControl(null)
             });
             this. ngAfterContentInit();
+            this.eventApiService.newEventAdded.next();
     });
 
 
@@ -160,7 +161,7 @@ export class InputEventComponent implements OnInit, AfterContentInit{
 
     const startDate: Date = this.eventForm.get('startDateField').value;
     const endDate: Date = this.eventForm.get('endDateField').value;
-    if ( endDate !== null) {
+    if ( endDate !== null && startDate !== null) {
       if ((endDate.getFullYear() < startDate.getFullYear()) ||
 
         (endDate.getFullYear()  === startDate.getFullYear()

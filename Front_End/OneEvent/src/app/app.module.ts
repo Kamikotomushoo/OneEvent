@@ -13,11 +13,14 @@ import { InputEventComponent } from './components/main.page/input-event/input-ev
 import { MainResponseComponent } from './components/main.page/main-response.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { HttpClientModule } from '@angular/common/http';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { AppComponent } from './components/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { EventApiService } from './services/event-api.service';
 import { NewEventDialogComponent } from './components/main.page/new-event-dialog/new-event-dialog.component';
+import { CalendarComponent } from './components/main.page/calendar/calendar.component';
+import { WholeEventDialogComponent } from './components/main.page/whole-event-dialog/whole-event-dialog.component';
 
 
 
@@ -29,7 +32,9 @@ import { NewEventDialogComponent } from './components/main.page/new-event-dialog
     HeaderComponent,
     InputEventComponent,
     MainResponseComponent,
-    NewEventDialogComponent
+    NewEventDialogComponent,
+    CalendarComponent,
+    WholeEventDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +48,12 @@ import { NewEventDialogComponent } from './components/main.page/new-event-dialog
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    FullCalendarModule
   ],
   entryComponents: [
-    NewEventDialogComponent
+    NewEventDialogComponent,
+    WholeEventDialogComponent
   ],
   providers: [EventApiService],
   bootstrap: [AppComponent]

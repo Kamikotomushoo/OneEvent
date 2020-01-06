@@ -60,12 +60,8 @@ namespace EventHub.Services
             var list = EventsRepository.GetAll()
                .Select(el => _mapper.Map(el, new HeadersOfEventsDTO()))
                .ToList();
-               
             
-            list.Sort((x,y) => DateTime.Compare(x.StartTime, y.StartTime));
-
-
-
+            //list.Sort((x,y) => DateTime.Compare(x.StartTime, y.StartTime));
             return list;
         }
 

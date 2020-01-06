@@ -1,6 +1,5 @@
 <div class="new-event-dialog">
-  <br>
-  <h1 >Smth New!</h1>
+  <h1 >More about Event!</h1>
   <div>
     <br>
     <p><b>Name:</b> {{data.name}}</p>
@@ -8,7 +7,8 @@
     <p><b>Start date:</b> {{startDay}}/{{startMonth}}/{{startYear}} {{startHours}}:{{startMinutes}}</p>
     <p *ngIf="data.endTime > data.startTime"><b>End date:</b> {{endDay}}/{{endMonth}}/{{endYear}} {{endHours}}:{{endMinutes}}</p>
   </div>
-  <div mat-dialog-actions>
+  <div mat-dialog-actions class="btns" >
     <button mat-button (click)="onNoClick()">Ok</button>
+    <button mat-button (click)="onDeleteClick()">Delete</button>
   </div>
 </div>
