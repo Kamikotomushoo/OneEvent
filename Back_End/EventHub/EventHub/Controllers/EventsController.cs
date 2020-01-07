@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using EventHub.Core.Abstractions.Services;
 using EventHub.Core.DTOs;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventHub.Controllers
@@ -47,19 +43,6 @@ namespace EventHub.Controllers
             
         }
 
-        //[HttpPut]
-        //public ActionResult<UserDTO> Update(UserDTO user)
-        //{
-        //    try
-        //    {
-        //        _service.Update(user);
-        //        return Ok(user);
-        //    }
-        //    catch
-        //    {
-        //        return new NotFoundResult();
-        //    }
-        //}
 
         [HttpPost]
         public ActionResult<FullEventsDTO> Insert([FromBody]FullEventsDTO eventDTO)

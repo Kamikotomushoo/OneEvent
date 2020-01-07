@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using EventHub.Core.DTOs;
-using EventHub.Core.Entities;
 
 
 namespace EventHub.Core.Abstractions.Services
@@ -13,6 +10,5 @@ namespace EventHub.Core.Abstractions.Services
         DetailsOfEventsDTO GetDetailsById(int Id);
         FullEventsDTO AddEvent(FullEventsDTO eventDTO);
         bool DeleteById(int id);
-      //  bool Update(FullEventsDTO eventDTO);
     }
 }

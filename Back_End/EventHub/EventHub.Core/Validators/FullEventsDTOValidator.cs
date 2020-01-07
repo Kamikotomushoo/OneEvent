@@ -1,10 +1,8 @@
 ﻿using EventHub.Core.DTOs;
 using FluentValidation;
 using FluentValidation.Results;
-using FluentValidation.Validators;
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace EventHub.Core.Validators
 {
@@ -59,31 +57,4 @@ namespace EventHub.Core.Validators
         }
     }
 
-
-    //public class EndTimeValidator : PropertyValidator
-    //{
-    //    private readonly DateTime _startTime;
-    //    private readonly DateTime _endTime;
-    //    public EndTimeValidator(DateTime start, DateTime end) : base(" End time should be after start time")
-    //    {
-    //        _startTime = start;
-    //        _endTime = end;
-    //    }
-
-    //    protected override bool IsValid(PropertyValidatorContext context)
-    //    {
-    //        if (_endTime > _startTime)
-    //            return true;
-    //        return false;
-    //    }
-    //}
-
-    //public static class EndTimeValidatorExtension
-    //{
-    //    public static bool EndTimeValidator<FullEventsDTO>(
-    //        this FullEventsDTO rule, DateTime start, DateTime end)
-    //    {
-    //        return end < start ? true : false;
-    //    }
-    //}
 }

@@ -5,10 +5,8 @@ using EventHub.Core.DTOs;
 using EventHub.Core.Entities;
 using EventHub.DAL;
 using EventHub.DAL.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EventHub.Services
 {
@@ -29,13 +27,9 @@ namespace EventHub.Services
             var myEvent = new Events();
             _mapper.Map(eventDTO, myEvent);
             var res = EventsRepository.Add(myEvent);
-            //if (res != null)
-            //{
-                _context.SaveChanges();
-                return eventDTO;
-            //}
-            //return null;
 
+            _context.SaveChanges();
+            return eventDTO;
         }
 
         public bool DeleteById(int id)
@@ -51,8 +45,8 @@ namespace EventHub.Services
 
         public DetailsOfEventsDTO GetDetailsById(int Id)
         {
-            var det = EventsRepository.GetById(Id);         
-            return  det != null ? _mapper.Map(det, new DetailsOfEventsDTO()) : null;
+            var det = EventsRepository.GetById(Id);
+            return det != null ? _mapper.Map(det, new DetailsOfEventsDTO()) : null;
         }
 
         public List<HeadersOfEventsDTO> GetAllHeaders()
@@ -60,22 +54,9 @@ namespace EventHub.Services
             var list = EventsRepository.GetAll()
                .Select(el => _mapper.Map(el, new HeadersOfEventsDTO()))
                .ToList();
-            
-            //list.Sort((x,y) => DateTime.Compare(x.StartTime, y.StartTime));
+
             return list;
         }
 
-        //public bool Update(FullEventsDTO eventDTO)
-        //{
-        //    var myEvent = new Events();
-        //    _mapper.Map(eventDTO, myEvent);
-        //    var res = EventsRepository.Update(myEvent);
-        //    if(res)
-        //    {
-        //        _context.SaveChanges();
-        //        return true;
-        //    }
-        //    return false;
-        //}
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using EventHub.Core.Abstractions.Repositories;
 
 namespace EventHub.DAL.Repositories
@@ -67,17 +64,5 @@ namespace EventHub.DAL.Repositories
             }
         }
 
-        //public bool Update(TEntity entity)
-        //{
-        //    try
-        //    {
-        //        _context.Set<TEntity>().Update(entity);
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

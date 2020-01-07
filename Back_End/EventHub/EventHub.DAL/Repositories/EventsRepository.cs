@@ -1,9 +1,6 @@
 ﻿using EventHub.Core.Abstractions.Repositories;
 using EventHub.Core.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EventHub.DAL.Repositories
 {
@@ -16,16 +13,8 @@ namespace EventHub.DAL.Repositories
         }
         public Events Add(Events entity)
         {
-            //try
-            //{
                 _context.Set<Events>().Add(entity);
                 return entity;
-            //}
-            //catch
-            //{
-            //    return null;
-            //}
-
         }
 
         public bool DeleteById(int id)
@@ -68,17 +57,5 @@ namespace EventHub.DAL.Repositories
             }
         }
 
-        //public bool Update(Events entity)
-        //{
-        //    try
-        //    {
-        //        _context.Set<Events>().Update(entity);
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

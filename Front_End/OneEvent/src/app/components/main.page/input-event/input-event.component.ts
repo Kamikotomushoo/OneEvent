@@ -2,9 +2,7 @@ import { Component, OnInit, AfterContentInit, DoCheck, AfterContentChecked } fro
 import { FormGroup, Validators, FormControl, ValidatorFn } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NgxMaterialTimepickerTheme } from "ngx-material-timepicker";
-import {
-  // CorrectStartTime
-} from "../../../validators/CustomValidators";
+
 import { IEventContext } from '../../../interfaces/event.interface';
 import { EventApiService } from 'src/app/services/event-api.service';
 import { DateTime } from 'luxon';
@@ -67,7 +65,6 @@ export class InputEventComponent implements OnInit, AfterContentInit{
 
 
   OnSubmit() {
-    // console.log(this.eventForm.get('endDateField').value);
         this.eventApiService.insertNewEvent(this.eventForm).subscribe(responseData  => {
           const rs = responseData as IEventContext;
             const dialogRef = this.dialog.open(NewEventDialogComponent, {
@@ -95,10 +92,7 @@ export class InputEventComponent implements OnInit, AfterContentInit{
   то при заданні валідатора з параметром ( дата початку івенту була параметром ) воно брало лише ту дату,
   яка по дефолту стоїть в інпуті... */
 
-  // CheckStartDate(control: FormControl): {[s: string]: boolean}  {
-  //   this.eventForm.get('startTimeField').updateValueAndValidity();
-  //   return null;
-  // }
+
   CorrectStartDate(control: FormControl): {[s: string]: boolean}  {
 
     const tempDate = new Date();

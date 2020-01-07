@@ -26,8 +26,6 @@ import { ListOfEventsDialogComponent } from './components/main.page/list-of-even
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

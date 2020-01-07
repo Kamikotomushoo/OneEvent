@@ -11,7 +11,6 @@ namespace EventHub.Core.Abstractions.Repositories
         IQueryable<TEntity> GetAll();
         TEntity Add(TEntity entity);
         bool DeleteById(int id);
-      //  bool Update(TEntity entity);
 
     }
 }

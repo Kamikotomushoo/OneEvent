@@ -29,7 +29,7 @@ export class EventApiService {
       startDate.setHours(+startTime[0]);
       startDate.setMinutes(+startTime[1]);
 
-      var endDate = eventForm.get('endDateField').value; // а як інакше? константу не влпілю сюди, вона ж далі змінюєтсья
+      const endDate = eventForm.get('endDateField').value; 
       let endTime = eventForm.get('endTimeField').value;
       let event: IEventContext;
       if ( endDate !== null) {

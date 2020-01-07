@@ -23,7 +23,6 @@ export class ListOfEventsDialogComponent implements OnInit {
 
   ngOnInit() {
     const currDay : Date = new Date(this.data.currentDay);
-    // alert(currDay.toDateString());
     this.currentDate = currDay.toDateString();
 
     this.listOfEvents = this.data.eventList;
