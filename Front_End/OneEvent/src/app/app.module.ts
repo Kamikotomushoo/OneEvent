@@ -14,6 +14,7 @@ import { MainResponseComponent } from './components/main.page/main-response.comp
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import {MatListModule} from '@angular/material/list';
 
 import { AppComponent } from './components/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,6 +22,7 @@ import { EventApiService } from './services/event-api.service';
 import { NewEventDialogComponent } from './components/main.page/new-event-dialog/new-event-dialog.component';
 import { CalendarComponent } from './components/main.page/calendar/calendar.component';
 import { WholeEventDialogComponent } from './components/main.page/whole-event-dialog/whole-event-dialog.component';
+import { ListOfEventsDialogComponent } from './components/main.page/list-of-events-dialog/list-of-events-dialog.component';
 
 
 
@@ -34,7 +36,8 @@ import { WholeEventDialogComponent } from './components/main.page/whole-event-di
     MainResponseComponent,
     NewEventDialogComponent,
     CalendarComponent,
-    WholeEventDialogComponent
+    WholeEventDialogComponent,
+    ListOfEventsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,11 +52,13 @@ import { WholeEventDialogComponent } from './components/main.page/whole-event-di
     NgxMaterialTimepickerModule,
     HttpClientModule,
     MatDialogModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatListModule
   ],
   entryComponents: [
     NewEventDialogComponent,
-    WholeEventDialogComponent
+    WholeEventDialogComponent,
+    ListOfEventsDialogComponent
   ],
   providers: [EventApiService],
   bootstrap: [AppComponent]

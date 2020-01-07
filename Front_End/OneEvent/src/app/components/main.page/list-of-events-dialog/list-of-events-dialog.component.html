@@ -1,0 +1,16 @@
+<div class="new-event-dialog">
+  <br>
+  <h1 >{{currentDate}}</h1>
+  <div>
+    <br>
+    <mat-action-list *ngFor="let event of listOfEvents" class="elements">
+        <button mat-button (click)="openEvent(event.id)" ><p class="element"><b class="label"> Start Time: </b> {{event.startTime.toDateString()}}
+          {{event.startTime.toLocaleTimeString()}}
+            <b class="label"> Name: </b> "{{event.name}}"</p></button>
+      </mat-action-list>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Ok</button>
+  </div>
+</div>

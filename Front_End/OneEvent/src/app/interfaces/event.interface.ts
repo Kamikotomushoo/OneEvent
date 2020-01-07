@@ -1,7 +1,13 @@
 export interface IEventContext {
+  id?: number;
   name?: string;
   description?: string;
   startTime?: Date;
   endTime?: Date;
-  model?: any;
+}
+
+
+export interface IEventContextForList {
+  eventList?: Array<IEventContext>;
+  currentDay?: Date;
 }

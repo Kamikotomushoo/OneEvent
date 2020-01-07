@@ -5,8 +5,8 @@
     <br>
     <p><b>Name:</b> {{data.name}}</p>
     <p *ngIf="data.description"><b>Description:</b> {{data.description}}</p>
-    <p><b>Start date:</b> {{startDay}}/{{startMonth}}/{{startYear}} {{startHours}}:{{startMinutes}}</p>
-    <p *ngIf="data.endTime > data.startTime"><b>End date:</b> {{endDay}}/{{endMonth}}/{{endYear}} {{endHours}}:{{endMinutes}}</p>
+    <p><b>Start date:</b> {{startDate}} {{startTime}}</p>
+    <p *ngIf="data.endTime > data.startTime"><b>End date:</b> {{endDate}} {{endTime}}</p>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Ok</button>

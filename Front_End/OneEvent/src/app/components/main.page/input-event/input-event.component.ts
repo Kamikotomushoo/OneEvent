@@ -67,9 +67,9 @@ export class InputEventComponent implements OnInit, AfterContentInit{
 
 
   OnSubmit() {
-
+    // console.log(this.eventForm.get('endDateField').value);
         this.eventApiService.insertNewEvent(this.eventForm).subscribe(responseData  => {
-          var rs = responseData as IEventContext;
+          const rs = responseData as IEventContext;
             const dialogRef = this.dialog.open(NewEventDialogComponent, {
               width: '400px',
               data: rs
@@ -128,11 +128,10 @@ export class InputEventComponent implements OnInit, AfterContentInit{
       if ((date.getFullYear() === tempDate.getFullYear()
       && date.getMonth() === tempDate.getMonth()
       && date.getDate() === tempDate.getDate()) ) {
-        var myTime = control.value;
+        let myTime = control.value;
         myTime = myTime.split(':');
         if(tempDate.getHours() > +myTime[0] ||
         (tempDate.getHours() === +myTime[0] && tempDate.getMinutes() >= +myTime[1] )) return { 'incorrectTime': true };
-        // this.eventForm.get('startDateField').updateValueAndValidity();
         return null;
       }
       return null;
@@ -147,8 +146,6 @@ export class InputEventComponent implements OnInit, AfterContentInit{
       return { 'endTimeDoesNotExist': true }; }
       else if(control.value !== null && this.eventForm.get('endTimeField').value !== null)
       {
-        // if (this.eventForm.get('endTimeField').invalid){
-        //    this.eventForm.get('endTimeField').updateValueAndValidity(); }
         this.eventForm.get('endTimeField').updateValueAndValidity();
 
         return null;
@@ -177,8 +174,8 @@ export class InputEventComponent implements OnInit, AfterContentInit{
         && endDate.getMonth() === startDate.getMonth()
         && endDate.getDate() === startDate.getDate()) ) {
 
-        var myTime = control.value;
-        var startTime = this.eventForm.get('startTimeField').value;
+        let myTime = control.value;
+        let startTime = this.eventForm.get('startTimeField').value;
 
         myTime = myTime.split(':');
         startTime = startTime.split(':');

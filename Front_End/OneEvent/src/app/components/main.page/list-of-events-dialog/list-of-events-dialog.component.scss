@@ -1,0 +1,29 @@
+.new-event-dialog{
+  font-family: 'Lexend Tera', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 570px;
+
+  .elements{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .element{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      overflow: hidden;
+      justify-content: center;
+
+      .label{
+        margin: 0 7px 0 7px;
+      }
+    }
+  }
+  // button{
+  //   margin: 0 50px 0 50px;
+  // }
+}

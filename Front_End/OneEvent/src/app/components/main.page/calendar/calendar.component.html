@@ -1,18 +1,19 @@
-<!-- <button (click)="updateEvents()" id="updateEvents">Update events</button>
-<button (click)="updateHeader()" id="updateHeader">Update header</button> -->
+
 <div class="main">
     <div class="div-for-calendar">
         <full-calendar
         *ngIf="options"
         #fullcalendar
-        [editable]="true"
+        [editable]="false"
         [events]="eventsModel"
         [header]="options.header"
         [plugins]="options.plugins"
         (eventClick)="eventClick($event)"
         [height]="300"
+        [selectable]="options.selectable"
+        (select)="DateClick($event)"
       ></full-calendar>
     </div>
 </div>
 
-<!-- <router-outlet></router-outlet> -->
+

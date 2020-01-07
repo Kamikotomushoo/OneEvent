@@ -20,16 +20,16 @@ export class EventApiService {
   insertNewEvent(eventForm: FormGroup ) {
     try {
 
-      let eventName = eventForm.get('nameEvent').value;
-      let description = eventForm.get('descritionField').value;
+      const eventName = eventForm.get('nameEvent').value;
+      const description = eventForm.get('descritionField').value;
 
-      let startDate = new Date(eventForm.get('startDateField').value);
+      const startDate = new Date(eventForm.get('startDateField').value);
       let startTime = eventForm.get('startTimeField').value;
       startTime = startTime.split(':');
       startDate.setHours(+startTime[0]);
       startDate.setMinutes(+startTime[1]);
 
-      let endDate = eventForm.get('endDateField').value;
+      var endDate = eventForm.get('endDateField').value; // а як інакше? константу не влпілю сюди, вона ж далі змінюєтсья
       let endTime = eventForm.get('endTimeField').value;
       let event: IEventContext;
       if ( endDate !== null) {
@@ -38,18 +38,18 @@ export class EventApiService {
         endDate.setHours(+endTime[0]);
         endDate.setMinutes(+endTime[1]);
         event  = {name: eventName,
-          description: description,
-          startTime: startDate,
-          endTime: endDate };
+                  description: description,
+                  startTime: startDate,
+                  endTime: endDate };
 
       } else {
         event  = {name: eventName,
-          description: description,
-          startTime: startDate };
+                  description: description,
+                  startTime: startDate };
       }
 
 
-      var returnObserveble = this.http.post(environment.apiUrl + '/events' , event );
+      const returnObserveble = this.http.post(environment.apiUrl + '/events' , event );
       return returnObserveble;
 
     } catch {
